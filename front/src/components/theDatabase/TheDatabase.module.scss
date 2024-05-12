@@ -1,0 +1,57 @@
+.contentDataBase {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  column-gap: 40px;
+}
+
+.images {
+  width: 687px;
+  height: 808px;
+  background-image: url("./icons/unik.png");
+  background-size: cover;
+  background-position: center;
+}
+
+.info {
+  text-align: center;
+  white-space: nowrap;
+}
+
+.text {
+  font-size: 58px;
+  font-weight: 600;
+  line-height: 54px;
+  color: #2E2E2E;
+  margin-bottom: 24px;
+}
+
+.text2 {
+  font-size: 48px;
+  font-weight: 600;
+  line-height: 64px;
+  color: #2E2E2E;
+}
+
+.sql {
+  width: 134px;
+  height: 70px;
+  font-size: 58px;
+  font-weight: 600;
+  line-height: 54px;
+  background: #E5B300;
+  color: #fff;
+}
+
+.link {
+  display: grid;
+  place-items: center;
+  width: 177px;
+  height: 52px;
+  background: #E5B300;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 20px;
+  margin: 100px auto 0;
+}

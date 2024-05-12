@@ -1,0 +1,32 @@
+@import "../../app/styles/mixin";
+
+.nameHeader {
+  text-align: center;
+  font-size: 58px;
+  line-height: 64px;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 14px;
+
+  @include tablet {
+    font-size: 34px;
+    line-height: 54px;
+  }
+}
+
+.text {
+  font-size: 54px;
+  line-height: 64px;
+  font-weight: 500;
+  color: #fff;
+  padding: 8px 8px 0px;
+  background: #E5B300;
+}
+
+.textFuture {
+  text-align: center;
+  font-size: 32px;
+  line-height: 38px;
+  color: #fff;
+  margin-top: 38px;
+}
