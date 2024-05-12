@@ -18,18 +18,18 @@ class DirectionController {
     }
   }
   async getAll(req, res) {
-    const courses = await Direction.findAndCountAll()
-    return res.json(courses)
+    const data = await Direction.findAndCountAll()
+    return res.json(data)
   }
 
   async getOne(req, res) {
     const {id} = req.params
-    const course = await Direction.findOne(
+    const data = await Direction.findOne(
       {
         where:{id}
       }
     )
-    return res.json(course)
+    return res.json(data)
   }
   async deleteOne(req, res, next) {
     try {

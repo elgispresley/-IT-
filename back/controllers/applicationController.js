@@ -13,8 +13,8 @@ class ApplicationController {
     }
   }
   async getAll(req, res) {
-    const courses = await Application.findAndCountAll()
-    return res.json(courses)
+    const data = await Application.findAndCountAll()
+    return res.json(data)
   }
 
   async deleteOne(req, res, next) {
