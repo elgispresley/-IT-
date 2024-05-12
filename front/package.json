@@ -16,6 +16,7 @@
     "next-auth": "^4.24.7",
     "react": "^18",
     "react-dom": "^18",
+    "sass": "^1.77.1",
     "tsx": "^4.9.1"
   },
   "devDependencies": {
