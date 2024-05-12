@@ -1,0 +1,49 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model users{
+    id          Int         @id @default(autoincrement())
+    email       String      @unique
+    name        String
+    password    String
+    role        Role        @default(USER)
+    createdAt   DateTime    @default(now())
+    updatedAt   DateTime    @updatedAt
+}
+
+model directions {
+    id                  Int         @id @default(autoincrement())
+    title               String
+    description         String
+    form_of_studies     FormOfStudies   @default(FULL_TIME)
+    price               Int
+    img                 String
+    createdAt           DateTime    @default(now())
+    updatedAt           DateTime    @updatedAt
+}
+model applications {
+    id                  Int         @id @default(autoincrement())
+    email               String
+    processed           Boolean     @default(false)
+    name                String
+    createdAt           DateTime    @default(now())
+    updatedAt           DateTime    @updatedAt
+}
+
+enum FormOfStudies {
+    FULL_TIME
+    DISTANCE_LEARNING
+}
+
+enum Role {
+    USER
+    ADMIN
+}
+
+
