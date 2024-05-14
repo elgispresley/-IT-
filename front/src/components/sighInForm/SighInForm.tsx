@@ -1,7 +1,7 @@
 'use client'
-import { useRouter } from 'next/navigation'
-import { signIn } from 'next-auth/react'
-import { FormEventHandler } from 'react'
+import {useRouter} from 'next/navigation'
+import {signIn} from 'next-auth/react'
+import {FormEventHandler} from 'react'
 import styles from './SighInForm.module.scss'
 
 const SighInForm = () => {
@@ -15,10 +15,16 @@ const SighInForm = () => {
 			password: formData.get('password'),
 			redirect: false
 		})
+
 		if (res && !res.error) {
-			router.push('/profile')
+
+			if (res) {
+				// router.push('/admin');
+			} else {
+				router.push('/admin');
+			}
 		} else {
-			console.log(res)
+			console.log(res);
 		}
 	}
 	return (

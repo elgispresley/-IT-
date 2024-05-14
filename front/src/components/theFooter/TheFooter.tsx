@@ -1,11 +1,15 @@
+'use client'
+
 import LinkedinIcon from '@/components/theFooter/icons/LinkedinIcon'
 import InstagramIcon from '@/components/theFooter/icons/InstagramIcon'
 import TwitterIcon from '@/components/theFooter/icons/TwitterIcon'
-import styles from './TheFooter.module.scss'
 import FacebookIcons from '@/components/theFooter/icons/FacebookIcons'
+import {useSession} from "next-auth/react";
 import Link from 'next/link'
+import styles from './TheFooter.module.scss'
 
 const TheFooter = () => {
+	const session = useSession();
 
 	return (
 		<footer className={styles.footer}>
@@ -25,7 +29,10 @@ const TheFooter = () => {
 							</p>
 						</div>
 					</div>
-					<button className={styles.submit}>Отправить</button>
+					{
+						session?.data ? <button className={styles.submit}>Отправить</button> :
+							<div className={styles.warning}>Для того что бы отправить email вы должны авторизоваться</div>
+					}
 				</form>
 				<ul className={styles.footerBlock}>
 					<li>

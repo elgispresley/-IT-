@@ -6,7 +6,7 @@ import styles from './GoogleButton.module.scss'
 
 const GoogleButton = () => {
 	const searchParams = useSearchParams()
-	const callbackUrl = searchParams.get('callbackUrl') || '/profile'
+	const callbackUrl = searchParams.get('callbackUrl') || '/admin'
 
 
 	return (
