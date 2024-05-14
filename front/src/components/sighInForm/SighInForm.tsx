@@ -1,11 +1,15 @@
 'use client'
 import {useRouter} from 'next/navigation'
-import {signIn} from 'next-auth/react'
+import {signIn, useSession} from 'next-auth/react'
 import {FormEventHandler} from 'react'
 import styles from './SighInForm.module.scss'
 
 const SighInForm = () => {
-	const router = useRouter()
+	const router = useRouter();
+	const session = useSession();
+
+	console.log(session.data?.user?.name)
+
 	const handleSubmit: FormEventHandler<HTMLFormElement> = async (event) => {
 		event.preventDefault()
 		const formData = new FormData(event.currentTarget)
@@ -16,16 +20,13 @@ const SighInForm = () => {
 			redirect: false
 		})
 
-		if (res && !res.error) {
-
-			if (res) {
-				// router.push('/admin');
-			} else {
-				router.push('/admin');
-			}
-		} else {
-			console.log(res);
+		if (res) {
+			session.data && (
+				session?.data?.user?.name === 'admin' ?
+					router.push('/admin') : ''
+			)
 		}
+
 	}
 	return (
 		<form onSubmit={handleSubmit} className={styles.loginForm}>

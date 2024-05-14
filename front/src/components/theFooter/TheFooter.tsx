@@ -1,5 +1,6 @@
 'use client'
 
+import React, {useState} from "react";
 import LinkedinIcon from '@/components/theFooter/icons/LinkedinIcon'
 import InstagramIcon from '@/components/theFooter/icons/InstagramIcon'
 import TwitterIcon from '@/components/theFooter/icons/TwitterIcon'
@@ -8,19 +9,60 @@ import {useSession} from "next-auth/react";
 import Link from 'next/link'
 import styles from './TheFooter.module.scss'
 
+interface Props {
+	email: string;
+	processed: boolean;
+	name: string | null | undefined;
+}
+
 const TheFooter = () => {
 	const session = useSession();
+	const [newDirection, setNewDirection] = useState<Props>({
+		email: '',
+		processed: false,
+		name: session.data?.user?.name,
+	});
+
+	const handleChange = (e: any) => {
+		const {name, value} = e.target;
+		setNewDirection(prevState => ({
+			...prevState,
+			[name]: value
+		}));
+	};
+
+	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+		e.preventDefault();
+		try {
+			const formData = new FormData();
+			formData.append('email', newDirection.email);
+
+			const response = await fetch('http://localhost:5000/api/application/', {
+				method: 'POST',
+				body: formData,
+			});
+
+			if (response.ok) {
+				console.log('добавлен объект');
+			} else {
+				console.error('Ошибка при добавлении нового направления:', response.statusText);
+			}
+		} catch (error) {
+			console.error('Ошибка при выполнении запроса:', error);
+		}
+	};
 
 	return (
 		<footer className={styles.footer}>
 			<div className={styles.componentFooter}>
-				<form className={styles.headerInput}>
+				<form className={styles.headerInput} onSubmit={handleSubmit}>
 					<h2 className={styles.nameFooter}>Оставьте вашу почту и мы свяжемся с вами </h2>
 					<div className={styles.inputEmail}>
-						<input type='email' className={styles.inputText} placeholder='Email address' />
+						<input type='email' name='email' value={newDirection.email} className={styles.inputText}
+							   placeholder='Email address' onChange={handleChange}/>
 						<div className={styles.checboxInfo}>
 							<div>
-								<input type='checkbox' className={styles.checkbox} />
+								<input type='checkbox' name='processed' checked={newDirection.processed} className={styles.checkbox} onChange={handleChange} />
 							</div>
 							<p className={styles.textInput}>
 								Я подтверждаю, что мне больше 16 лет, и я согласен с Условиями

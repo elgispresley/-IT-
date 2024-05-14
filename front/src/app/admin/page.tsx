@@ -1,9 +1,10 @@
 'use client'
 
 import React, {useEffect, useState} from 'react';
-import {NextResponse} from "next/server";
+import styles from '../styles/admin/Admin.module.scss'
 
 interface Direction {
+    id: string;
     title: string;
     description: string;
     form_of_studies: string;
@@ -15,14 +16,13 @@ interface Direction {
 const PageAdmin = () => {
     const [directions, setDirections] = useState<Direction[]>([]);
     const [newDirection, setNewDirection] = useState<Direction>({
+        id: '',
         title: '',
         img: '',
         description: '',
         form_of_studies: '',
         price: '',
     });
-
-    console.log(newDirection)
 
     useEffect(() => {
         const fetchData = async () => {
@@ -52,13 +52,13 @@ const PageAdmin = () => {
         }
     };
 
-    const handleDelete = async (index: number) => {
+    const handleDelete = async (index: string) => {
         try {
             const response = await fetch(`http://localhost:5000/api/direction/${index}`, {
                 method: 'DELETE'
             });
             if (response.ok) {
-                setDirections(prevDirections => prevDirections.filter((_, i) => i !== index));
+                console.log('Объект удален')
             } else {
                 console.error('Ошибка при удалении направления:', response.statusText);
             }
@@ -70,11 +70,12 @@ const PageAdmin = () => {
         e.preventDefault();
         try {
             const formData = new FormData();
+            formData.append('id', newDirection.id);
             formData.append('title', newDirection.title);
             formData.append('description', newDirection.description);
             formData.append('form_of_studies', newDirection.form_of_studies);
             formData.append('price', newDirection.price);
-            formData.append('img', newDirection.img); // Добавляем файл в FormData
+            formData.append('img', newDirection.img);
 
             const response = await fetch('http://localhost:5000/api/direction/', {
                 method: 'POST',
@@ -92,58 +93,83 @@ const PageAdmin = () => {
     };
 
     return (
-        <div>
-            <h2>Создать новое направление</h2>
-            <form onSubmit={handleSubmit}>
-                <div>
-                    <label>Title:</label>
-                    <input type="text" name="title" value={newDirection.title} onChange={handleChange} />
+        <div className={styles.wrapperAdmin}>
+            <h2 className={styles.nameAdmin}>Создать новое направление</h2>
+            <form className={styles.formAdmin} onSubmit={handleSubmit}>
+                <div className={styles.inputForm}>
+                    <label>Название:</label>
+                    <input className={styles.input} placeholder='Название' type="text" name="title"
+                           value={newDirection.title} onChange={handleChange}/>
                 </div>
-                <div>
-                    <label>Description:</label>
-                    <input type="text" name="description" value={newDirection.description} onChange={handleChange} />
+                <div className={styles.inputForm}>
+                    <label>Информация:</label>
+                    <textarea maxLength={400} className={styles.inputText} placeholder='Текст' name="description"
+                              value={newDirection.description} onChange={handleChange}/>
                 </div>
-                <div>
-                    <label>Form:</label>
-                    <select name="form_of_studies" value={newDirection.form_of_studies} onChange={handleChange}>
-                        <option value="FULL_TIME">Очный</option>
-                        <option value="DISTANCE_LEARNING">Заочный</option>
+                <div className={styles.inputForm}>
+                    <label>Форма Обучения:</label>
+                    <select className={styles.selectForm} name="form_of_studies" value={newDirection.form_of_studies}
+                            onChange={handleChange}>
+                        <option className={styles.oprions} value="FULL_TIME">Очный</option>
+                        <option className={styles.oprions} value="DISTANCE_LEARNING">Заочный</option>
                     </select>
                 </div>
-                <div>
-                    <label>Price:</label>
-                    <input type="number" name="price" value={newDirection.price} onChange={handleChange} />
+                <div className={styles.inputForm}>
+                    <label>Цена:</label>
+                    <input className={styles.input} placeholder='Цена' type="number" name="price"
+                           value={newDirection.price} onChange={handleChange}/>
                 </div>
-                <div>
-                    <label>Img:</label>
-                    <input type="file" name="img" accept='/image/*, .png, .jpg, .web' onChange={handleChange} />
+                <div className={styles.inputForm}>
+                    <label>Картинка:</label>
+                    <div className={styles.blockImages}>
+                        <input className={styles.imagesInput} type="file" name="img" accept='/image/*, .png, .jpg, .web'
+                               onChange={handleChange}/>
+                    </div>
                 </div>
-                <button type="submit">Отправить</button>
+                <button className={styles.summit} type="submit">Отправить</button>
             </form>
 
             <h2>Направления</h2>
-            <table>
-                <thead>
-                <tr>
-                    <th>Title</th>
-                    <th>Description</th>
-                    <th>form</th>
-                    <th>Price</th>
-                    <th>Actions</th>
-                </tr>
-                </thead>
-                <tbody>
-                {directions.map((direction, index) => (
-                    <tr key={index}>
-                        <td>{direction.title}</td>
-                        <td>{direction.description}</td>
-                        <td>{direction.form_of_studies}</td>
-                        <td>{direction.price}</td>
-                        <td><button onClick={() => handleDelete(index)}>Удалить</button></td>
-                    </tr>
+            <ul className={styles.blockList}>
+                {directions.map((elem, index) => (
+                    <li key={elem.id} className={styles.infoList}>
+                        <div className={styles.blockImages}>
+                            <img className={styles.image} src={`http://localhost:5000/${elem.img}`} alt={elem.title}/>
+                        </div>
+                        <div>
+                            <h2 className={styles.nameHeader}>{elem.title}</h2>
+                            <div className={styles.line}></div>
+                        </div>
+                        <div>
+                            <p className={styles.Desctiption}>{elem.description}</p>
+                            <ul className={styles.blockInfo}>
+                                <li className={styles.infoDescrition}>
+                                    <div className={styles.nameDescrition}>Форма обучения:</div>
+                                    <div
+                                        className={styles.textDescrition}>{elem.form_of_studies === 'FULL_TIME' ? 'Заочный' : 'Очный'}</div>
+                                </li>
+                                <li className={styles.infoDescrition}>
+                                    <div className={styles.nameDescrition}>Основа обучения:</div>
+                                    <div className={styles.textDescrition}>Контракт</div>
+                                </li>
+                                <li className={styles.infoDescrition}>
+                                    <div className={styles.nameDescrition}>Контракт:</div>
+                                    <div className={styles.textDescrition}>{elem.price}</div>
+                                </li>
+                                <li className={styles.infoDescrition}>
+                                    <div className={styles.nameDescrition}>На базе 9 класса:</div>
+                                    <div className={styles.textDescrition}>2 года 10 месяцев</div>
+                                </li>
+                                <li className={styles.infoDescrition}>
+                                    <div className={styles.nameDescrition}>На базе 11 класса:</div>
+                                    <div className={styles.textDescrition}>1 год 10 месяцев</div>
+                                </li>
+                            </ul>
+                        </div>
+                    <button className={styles.delete} onClick={() => handleDelete(elem.id)}>Удалить</button>
+                    </li>
                 ))}
-                </tbody>
-            </table>
+        </ul>
         </div>
     );
 };

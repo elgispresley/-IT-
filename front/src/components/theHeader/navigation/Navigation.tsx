@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from 'react'
+import React from 'react'
 import Link from 'next/link'
 import { useSession } from 'next-auth/react'
 import styles from './Navigation.module.scss'
@@ -15,7 +15,6 @@ type Props = {
 }
 
 const Navigation = ({ navLinks }: Props) => {
-	const [isActive, setActive] = useState<boolean>()
 	const session = useSession()
 
 	return (
@@ -29,9 +28,12 @@ const Navigation = ({ navLinks }: Props) => {
 				)
 			})}
 			{
-				session?.data && (
-					<Link className={styles.textLink}
-								href='/profile'>Профиль</Link>
+				session.data && (
+					session.data?.user?.name === 'admin' ? (
+						<Link className={styles.textLink}
+							  href='/admin'>Профиль</Link>
+					) : <Link className={styles.textLink}
+							  href='/profile'>Профиль</Link>
 				)
 			}
 		</>

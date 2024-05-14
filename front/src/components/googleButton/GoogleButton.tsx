@@ -6,8 +6,7 @@ import styles from './GoogleButton.module.scss'
 
 const GoogleButton = () => {
 	const searchParams = useSearchParams()
-	const callbackUrl = searchParams.get('callbackUrl') || '/admin'
-
+	const callbackUrl = searchParams.get('callbackUrl') || '/profile'
 
 	return (
 		<button className={styles.gogleBtn} onClick={() => signIn('google', { callbackUrl })}>
