@@ -39,10 +39,17 @@ const PageAdmin = () => {
 
     const handleChange = (e: any) => {
         const { name, value } = e.target;
-        setNewDirection(prevState => ({
-            ...prevState,
-            [name]: value
-        }));
+        if (name === 'img') {
+            setNewDirection(prevState => ({
+                ...prevState,
+                [name]: e.target.files[0]
+            }));
+        } else {
+            setNewDirection(prevState => ({
+                ...prevState,
+                [name]: value
+            }));
+        }
     };
 
     const handleDelete = async (index: number) => {
@@ -59,20 +66,23 @@ const PageAdmin = () => {
             console.error('Ошибка при выполнении запроса:', error);
         }
     };
-
-
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         try {
+            const formData = new FormData();
+            formData.append('title', newDirection.title);
+            formData.append('description', newDirection.description);
+            formData.append('form_of_studies', newDirection.form_of_studies);
+            formData.append('price', newDirection.price);
+            formData.append('img', newDirection.img); // Добавляем файл в FormData
+
             const response = await fetch('http://localhost:5000/api/direction/', {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(newDirection),
+                body: formData,
             });
+
             if (response.ok) {
-                console.log('добавлен объект')
+                console.log('добавлен объект');
             } else {
                 console.error('Ошибка при добавлении нового направления:', response.statusText);
             }
