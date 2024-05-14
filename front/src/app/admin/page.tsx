@@ -1,11 +1,12 @@
 'use client'
 
 import React, {useEffect, useState} from 'react';
+import {NextResponse} from "next/server";
 
 interface Direction {
     title: string;
     description: string;
-    form: string;
+    form_of_studies: string;
     price: string;
     img: string;
 }
@@ -15,10 +16,10 @@ const PageAdmin = () => {
     const [directions, setDirections] = useState<Direction[]>([]);
     const [newDirection, setNewDirection] = useState<Direction>({
         title: '',
+        img: '',
         description: '',
-        form: '',
+        form_of_studies: '',
         price: '',
-        img: ''
     });
 
     console.log(newDirection)
@@ -71,15 +72,7 @@ const PageAdmin = () => {
                 body: JSON.stringify(newDirection),
             });
             if (response.ok) {
-                const newDirectionData = await response.json();
-                setDirections(prevDirections => [...prevDirections, newDirectionData]);
-                setNewDirection({
-                    title: '',
-                    description: '',
-                    form: '',
-                    price: '',
-                    img: ''
-                });
+                console.log('добавлен объект')
             } else {
                 console.error('Ошибка при добавлении нового направления:', response.statusText);
             }
@@ -102,9 +95,9 @@ const PageAdmin = () => {
                 </div>
                 <div>
                     <label>Form:</label>
-                    <select name="form" value={newDirection.form} onChange={handleChange}>
-                        <option value="Очный">Очный</option>
-                        <option value="Заочный">Заочный</option>
+                    <select name="form_of_studies" value={newDirection.form_of_studies} onChange={handleChange}>
+                        <option value="FULL_TIME">Очный</option>
+                        <option value="DISTANCE_LEARNING">Заочный</option>
                     </select>
                 </div>
                 <div>
@@ -113,7 +106,7 @@ const PageAdmin = () => {
                 </div>
                 <div>
                     <label>Img:</label>
-                    <input type="file" name="img" onChange={handleChange} />
+                    <input type="file" name="img" accept='/image/*, .png, .jpg, .web' onChange={handleChange} />
                 </div>
                 <button type="submit">Отправить</button>
             </form>
@@ -124,7 +117,7 @@ const PageAdmin = () => {
                 <tr>
                     <th>Title</th>
                     <th>Description</th>
-                    <th>Form</th>
+                    <th>form</th>
                     <th>Price</th>
                     <th>Actions</th>
                 </tr>
@@ -134,7 +127,7 @@ const PageAdmin = () => {
                     <tr key={index}>
                         <td>{direction.title}</td>
                         <td>{direction.description}</td>
-                        <td>{direction.form}</td>
+                        <td>{direction.form_of_studies}</td>
                         <td>{direction.price}</td>
                         <td><button onClick={() => handleDelete(index)}>Удалить</button></td>
                     </tr>
