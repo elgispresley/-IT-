@@ -6,10 +6,12 @@ import TheRating from '@/components/theRating/TheRating'
 import styles from './styles/Home/Home.module.scss'
 import ThePopularity from '@/components/thePopularity/ThePopularity'
 import TheJoinUs from '@/components/theJoinUs/TheJoinUs'
+import Layout from "@/components/layout/Layout";
 
 const Home = () => {
 	return (
 		<>
+			<Layout>
 			<section className={styles.wrapperCreate}>
 				<TheCreate />
 			</section>
@@ -29,6 +31,7 @@ const Home = () => {
 			<section className={styles.wrapperJoinUs}>
 				<TheJoinUs />
 			</section>
+			</Layout>
 		</>
 	)
 }

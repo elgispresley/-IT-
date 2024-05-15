@@ -12,7 +12,7 @@ import styles from './TheFooter.module.scss'
 interface Props {
 	email: string;
 	processed: boolean;
-	name: string | null | undefined;
+	name: any;
 }
 
 const TheFooter = () => {
@@ -20,7 +20,7 @@ const TheFooter = () => {
 	const [newDirection, setNewDirection] = useState<Props>({
 		email: '',
 		processed: false,
-		name: session.data.user.name || '',
+		name: '',
 	});
 
 	const handleChange = (e: any) => {
@@ -64,7 +64,7 @@ const TheFooter = () => {
 							   placeholder='Email address' onChange={handleChange}/>
 						<div className={styles.checboxInfo}>
 							<div>
-								<input type='checkbox' name='processed' checked={newDirection.processed} className={styles.checkbox} onChange={handleChange} />
+								<input type='checkbox' name='name' value={session.data?.user?.name ?? ''} required onChange={handleChange} className={styles.checkbox} />
 							</div>
 							<p className={styles.textInput}>
 								Я подтверждаю, что мне больше 16 лет, и я согласен с Условиями
@@ -74,7 +74,7 @@ const TheFooter = () => {
 						</div>
 					</div>
 					{
-						session?.data ? <button className={styles.submit}>Отправить</button> :
+						session?.data ? <button className={styles.submit} >Отправить</button> :
 							<div className={styles.warning}>Для того что бы отправить email вы должны авторизоваться</div>
 					}
 				</form>

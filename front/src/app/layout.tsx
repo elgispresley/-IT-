@@ -1,11 +1,12 @@
 import React from 'react'
-import { Metadata } from 'next'
-import { TheHeader } from '@/components/theHeader/TheHeader'
-import { TheFooter } from '@/components/theFooter/TheFooter'
-import { Providers } from '@/components/providers/Providers'
+import {Metadata} from 'next'
+import {Providers} from '@/components/providers/Providers'
+import Layout from "@/components/layout/Layout";
 
-import styles from './styles/Layout.module.scss'
 import './globals.css'
+import Head from "next/head";
+import styles from "@/app/styles/Layout.module.scss";
+import {TheHeader} from "@/components/theHeader/TheHeader";
 
 export const metadata: Metadata = {
 	title: 'Next App',
@@ -19,19 +20,22 @@ export default function RootLayout({
 }) {
 	return (
 		<html lang='en'>
-		<body>
+
+		<Head>
+			<meta charSet="UTF-8"/>
+			<meta httpEquiv="x-ua-compatible" content="ie=edge"/>
+			<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+			<meta name="format-detection" content="telephone=no, date=no, email=no, address=no"/>
+		</Head>
+
 		<Providers>
-			<div className={styles.wrapperContent}>
-				<div className={styles.header}>
-					<TheHeader />
-				</div>
-				<main className={styles.conteiner}>{children}</main>
-				<div className={styles.footer}>
-					<TheFooter />
-				</div>
-			</div>
-		</Providers>
+		<body>
+		<div className={styles.header}>
+			<TheHeader/>
+		</div>
+		<Layout isFooterHidden>{children}</Layout>
 		</body>
+		</Providers>
 		</html>
 	)
 }

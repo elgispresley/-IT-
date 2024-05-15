@@ -1,6 +1,7 @@
 'use client'
 
 import React, {useEffect, useState} from 'react';
+import Layout from "@/components/layout/Layout";
 import styles from '../styles/admin/Admin.module.scss'
 
 interface Direction {
@@ -58,6 +59,7 @@ const PageAdmin = () => {
                 method: 'DELETE'
             });
             if (response.ok) {
+                setDirections((prevDirections: any) => prevDirections.filter((app: any) => app.id !== index));
                 console.log('Объект удален')
             } else {
                 console.error('Ошибка при удалении направления:', response.statusText);
@@ -83,6 +85,13 @@ const PageAdmin = () => {
             });
 
             if (response.ok) {
+                const res = await fetch('http://localhost:5000/api/direction/');
+                if (!res.ok) {
+                    throw new Error('Unable to fetch directions!');
+                }
+                const jsonData = await res.json();
+                setDirections(jsonData.rows);
+
                 console.log('добавлен объект');
             } else {
                 console.error('Ошибка при добавлении нового направления:', response.statusText);
@@ -93,6 +102,7 @@ const PageAdmin = () => {
     };
 
     return (
+        <Layout isFooterHidden>
         <div className={styles.wrapperAdmin}>
             <h2 className={styles.nameAdmin}>Создать новое направление</h2>
             <form className={styles.formAdmin} onSubmit={handleSubmit}>
@@ -110,6 +120,7 @@ const PageAdmin = () => {
                     <label>Форма Обучения:</label>
                     <select className={styles.selectForm} name="form_of_studies" value={newDirection.form_of_studies}
                             onChange={handleChange}>
+                        <option className={styles.oprions} value=""></option>
                         <option className={styles.oprions} value="FULL_TIME">Очный</option>
                         <option className={styles.oprions} value="DISTANCE_LEARNING">Заочный</option>
                     </select>
@@ -171,6 +182,7 @@ const PageAdmin = () => {
                 ))}
         </ul>
         </div>
+        </Layout>
     );
 };
 

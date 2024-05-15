@@ -3,10 +3,11 @@ import TheDatabase from '@/components/theDatabase/TheDatabase'
 import styles from '../styles/university/University.module.scss'
 import TheList from '@/components/theList/TheList'
 import TheTextBase from '@/components/theTextBase/TheTextBase'
+import Layout from "@/components/layout/Layout";
 
 const PageUniversity = () => {
 	return (
-		<>
+		<Layout>
 			<section className={styles.wrapperDatabase}>
 				<TheDatabase />
 			</section>
@@ -16,7 +17,7 @@ const PageUniversity = () => {
 			<section className={styles.wrapperText}>
 				<TheTextBase />
 			</section>
-		</>
+		</Layout>
 	)
 }
 

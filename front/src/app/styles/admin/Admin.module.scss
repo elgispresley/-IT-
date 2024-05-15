@@ -186,3 +186,41 @@
 .infoList {
   margin-bottom: 40px;
 }
+.blockInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  row-gap: 16px;
+  margin-top: 34px;
+}
+
+.infoList {
+  margin-bottom: 40px;
+}
+
+.checboxBlock {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  column-gap: 24px;
+}
+
+.textInput {
+  font-size: 18px;
+  font-weight: 600;
+  color: #36384E;
+  border-bottom: 1px solid #36384E;
+  padding-bottom: 5px;
+}
+
+.name, .email {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 34px;
+  letter-spacing: 0.5px;
+  color: #36384E;
+}
+
+.email {
+  font-size: 16px;
+}
