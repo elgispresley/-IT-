@@ -1,6 +1,6 @@
 'use client'
 
-import React, {useState} from "react";
+import React, { useState } from "react";
 import LinkedinIcon from '@/components/theFooter/icons/LinkedinIcon'
 import InstagramIcon from '@/components/theFooter/icons/InstagramIcon'
 import TwitterIcon from '@/components/theFooter/icons/TwitterIcon'
@@ -20,7 +20,7 @@ const TheFooter = () => {
 	const [newDirection, setNewDirection] = useState<Props>({
 		email: '',
 		processed: false,
-		name: session.data?.user?.name,
+		name: session.data.user.name || '',
 	});
 
 	const handleChange = (e: any) => {
@@ -36,6 +36,8 @@ const TheFooter = () => {
 		try {
 			const formData = new FormData();
 			formData.append('email', newDirection.email);
+			formData.append('name', newDirection.name);
+			formData.append('processed', newDirection.processed.toString());
 
 			const response = await fetch('http://localhost:5000/api/application/', {
 				method: 'POST',
