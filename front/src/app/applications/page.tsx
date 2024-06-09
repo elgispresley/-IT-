@@ -43,8 +43,6 @@ const PageApplications = () => {
         }
     };
 
-
-    console.log(applications)
     const handleSubmit = async (index: string) => {
         try {
             const formData = new FormData();
