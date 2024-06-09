@@ -20,10 +20,16 @@ const Direction = sequelize.define('direction', {
 
 const Application = sequelize.define('application', {
   id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
-  email: { type: DataTypes.STRING, allowNull: false },
-  processed: { type: DataTypes.BOOLEAN, defaultValue: false },
   name: { type: DataTypes.STRING, allowNull: false },
+  email: { type: DataTypes.STRING, allowNull: false },
+  phone: { type: DataTypes.STRING, allowNull: false },
+  age: { type: DataTypes.INTEGER, allowNull: false },
+  processed: { type: DataTypes.BOOLEAN, defaultValue: false },
+  DirectionId: { type: DataTypes.INTEGER, allowNull: false },
 });
+
+Direction.hasMany(Application, { as: 'Direction', foreignKey: 'DirectionId' });
+Application.belongsTo(Direction, { as: 'Direction', foreignKey: 'DirectionId'});
 
 module.exports = {
   User, Direction, Application

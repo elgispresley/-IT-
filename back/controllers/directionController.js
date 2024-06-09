@@ -7,11 +7,11 @@ const path = require('path')
 class DirectionController {
   async create(req, res, next) {
     try {
-      const {title, description, form_of_studies, price, userId} = req.body
+      const {title, description, form_of_studies, price} = req.body
       const {img} = req.files
       let fileName = uuid.v4() + ".jpg"
       img.mv(path.resolve(__dirname, '..', 'static', fileName))
-      const data = await Direction.create({title, description, form_of_studies, price, userId, img: fileName})
+      const data = await Direction.create({title, description, form_of_studies, price, img: fileName})
       return res.json(data)
     } catch (e) {
       next(ApiError.badRequest(e.message))
