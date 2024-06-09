@@ -72,8 +72,38 @@ const PageApplications = () => {
                 {applications.map((elem: any) => (
                     <li key={elem.id} className={styles.infoList}>
                         <div className={styles.blockInfo}>
-                            <h2 className={styles.name}>{elem.name}</h2>
-                            <p className={styles.email}>{elem.email}</p>
+                            <div className={styles.blockImages}>
+                                <img className={styles.image} src={`http://localhost:5000/${elem.Direction.img}`} alt={elem.title}/>
+                            </div>
+                            <div>
+                                <h2 className={styles.nameHeader}>{elem.Direction.title}</h2>
+                                <div className={styles.line}></div>
+                            </div>
+                            <div>
+                                <p className={styles.Desctiption}>{elem.Direction.description}</p>
+                                <ul className={styles.blockInfo}>
+                                    <li className={styles.infoDescrition}>
+                                        <div className={styles.nameDescrition}>Форма обучения:</div>
+                                        <div className={styles.textDescrition}>{elem.Direction.form_of_studies === 'FULL_TIME' ? 'Заочный' : 'Очный'}</div>
+                                    </li>
+                                    <li className={styles.infoDescrition}>
+                                        <div className={styles.nameDescrition}>Основа обучения:</div>
+                                        <div className={styles.textDescrition}>Контракт</div>
+                                    </li>
+                                    <li className={styles.infoDescrition}>
+                                        <div className={styles.nameDescrition}>Контракт:</div>
+                                        <div className={styles.textDescrition}>{elem.Direction.price}</div>
+                                    </li>
+                                    <li className={styles.infoDescrition}>
+                                        <div className={styles.nameDescrition}>На базе 9 класса:</div>
+                                        <div className={styles.textDescrition}>2 года 10 месяцев</div>
+                                    </li>
+                                    <li className={styles.infoDescrition}>
+                                        <div className={styles.nameDescrition}>На базе 11 класса:</div>
+                                        <div className={styles.textDescrition}>1 год 10 месяцев</div>
+                                    </li>
+                                </ul>
+                            </div>
                             <div className={styles.checboxInfo}>
                                 <div className={styles.checboxBlock}>
                                     <input type='checkbox' name='processed' checked={elem.processed}

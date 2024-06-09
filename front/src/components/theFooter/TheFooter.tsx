@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from "react";
+import React, {useEffect, useState} from "react";
 import LinkedinIcon from '@/components/theFooter/icons/LinkedinIcon'
 import InstagramIcon from '@/components/theFooter/icons/InstagramIcon'
 import TwitterIcon from '@/components/theFooter/icons/TwitterIcon'
@@ -8,6 +8,8 @@ import FacebookIcons from '@/components/theFooter/icons/FacebookIcons'
 import {useSession} from "next-auth/react";
 import Link from 'next/link'
 import styles from './TheFooter.module.scss'
+import classNames from "classnames";
+import TheAddAplication from "@/components/theAddAplication/TheAddAplication";
 
 interface Props {
 	email: string;
@@ -16,68 +18,32 @@ interface Props {
 }
 
 const TheFooter = () => {
+	const [active, setActive] = useState(false);
+	const [idAplication, setIdAplication] = useState<number>(0);
 	const session = useSession();
 	const [newDirection, setNewDirection] = useState<Props>({
 		email: '',
 		processed: false,
 		name: '',
 	});
-
-	const handleChange = (e: any) => {
-		const {name, value} = e.target;
-		setNewDirection(prevState => ({
-			...prevState,
-			[name]: value
-		}));
-	};
-
-	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-		e.preventDefault();
-		try {
-			const formData = new FormData();
-			formData.append('email', newDirection.email);
-			formData.append('name', newDirection.name);
-			formData.append('processed', newDirection.processed.toString());
-
-			const response = await fetch('http://localhost:5000/api/application/', {
-				method: 'POST',
-				body: formData,
-			});
-
-			if (response.ok) {
-				console.log('добавлен объект');
-			} else {
-				console.error('Ошибка при добавлении нового направления:', response.statusText);
-			}
-		} catch (error) {
-			console.error('Ошибка при выполнении запроса:', error);
-		}
-	};
+	function Chenge () {
+		setActive(!active);
+	}
 
 	return (
 		<footer className={styles.footer}>
+			<div className={classNames(styles.shadow, {[styles.shadowNot]: !active})} onClick={() => setActive(!active)}></div>
+			<div className={classNames(styles.application, {[styles.applicationNot]: !active})}>
+				<TheAddAplication onActive={setActive} active={active} idAplication={idAplication}/>
+			</div>
 			<div className={styles.componentFooter}>
-				<form className={styles.headerInput} onSubmit={handleSubmit}>
-					<h2 className={styles.nameFooter}>Оставьте вашу почту и мы свяжемся с вами </h2>
-					<div className={styles.inputEmail}>
-						<input type='email' name='email' value={newDirection.email} className={styles.inputText}
-							   placeholder='Email address' onChange={handleChange}/>
-						<div className={styles.checboxInfo}>
-							<div>
-								<input type='checkbox' name='name' value={session.data?.user?.name ?? ''} required onChange={handleChange} className={styles.checkbox} />
-							</div>
-							<p className={styles.textInput}>
-								Я подтверждаю, что мне больше 16 лет, и я согласен с Условиями
-								использования
-								и Уведомлением о конфиденциальности.
-							</p>
-						</div>
-					</div>
+				<div className={styles.headerInput}>
+					<h2 className={styles.nameFooter}>Оставьте вашу информацию и мы свяжемся с вами </h2>
 					{
-						session?.data ? <button className={styles.submit} >Отправить</button> :
-							<div className={styles.warning}>Для того что бы отправить email вы должны авторизоваться</div>
+						session?.data ? <button onClick={Chenge} className={styles.submit} >Отправить</button> :
+							<div className={styles.warning}>Для того что бы пройти анкетирование вы должны авторизоваться</div>
 					}
-				</form>
+				</div>
 				<ul className={styles.footerBlock}>
 					<li>
 						<Link href='/'>

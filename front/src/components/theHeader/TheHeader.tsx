@@ -10,9 +10,6 @@ import styles from './TheHeader.module.scss'
 export const navItems = [
 	{ label: 'Университет', href: '/university' },
 	{ label: 'Направления', href: '/directions' },
-	{ label: 'Сообщества', href: '/communities' },
-	{ label: 'Новости', href: '/news' },
-	{ label: 'О нас', href: '/about' }
 ]
 
 

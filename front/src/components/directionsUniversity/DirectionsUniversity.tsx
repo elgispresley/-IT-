@@ -8,7 +8,7 @@ const DirectionsUniversity = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            const response = await fetch('http://localhost:5000/api/direction/');
+            const response = await fetch('http://localhost:5000/api/Direction/');
             if (!response.ok) {
                 throw new Error('Unable to fetch posts!');
             }
