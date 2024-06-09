@@ -1,7 +1,7 @@
 const sequelize = require('../db');
 const { DataTypes } = require('sequelize');
 
-const User = sequelize.define('user', {
+const User = sequelize.define('User', {
   id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
   name: { type: DataTypes.STRING },
   email: { type: DataTypes.STRING, unique: true },
@@ -9,7 +9,7 @@ const User = sequelize.define('user', {
   role: { type: DataTypes.STRING, defaultValue: 'USER' }
 });
 
-const Direction = sequelize.define('direction', {
+const Direction = sequelize.define('Direction', {
   id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
   title: { type: DataTypes.STRING, unique: true, allowNull: false },
   description: { type: DataTypes.TEXT, allowNull: false },
@@ -18,13 +18,14 @@ const Direction = sequelize.define('direction', {
   price: { type: DataTypes.INTEGER, allowNull: false },
 });
 
-const Application = sequelize.define('application', {
+const Application = sequelize.define('Application', {
   id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
   name: { type: DataTypes.STRING, allowNull: false },
   email: { type: DataTypes.STRING, allowNull: false },
   phone: { type: DataTypes.STRING, allowNull: false },
   age: { type: DataTypes.INTEGER, allowNull: false },
   processed: { type: DataTypes.BOOLEAN, defaultValue: false },
+  approved: { type: DataTypes.BOOLEAN, defaultValue: false },
   DirectionId: { type: DataTypes.INTEGER, allowNull: false },
 });
 

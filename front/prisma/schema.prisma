@@ -19,7 +19,7 @@ model Users{
 
 model Directions {
     id                  Int         @id @default(autoincrement())
-    title               String
+    title               String      @unique
     description         String
     form_of_studies     FormOfStudies   @default(FULL_TIME)
     price               Int
@@ -30,9 +30,12 @@ model Directions {
 }
 model Applications {
     id                  Int         @id @default(autoincrement())
-    email               String
-    processed           Boolean     @default(false)
     name                String
+    email               String
+    phone               String
+    age                 Int
+    processed           Boolean     @default(false)
+    approved            Boolean     @default(false)
     direction           Directions       @relation(fields: [DirectionId], references: [id])
     DirectionId         Int
     createdAt           DateTime    @default(now())

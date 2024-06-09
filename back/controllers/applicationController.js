@@ -5,8 +5,8 @@ const ApiError = require('../error/ApiError');
 class ApplicationController {
     async create(req, res, next) {
         try {
-            const { name, email, phone, age, processed, DirectionId } = req.body;
-            const data = await Application.create({ name, email, phone, age, processed, DirectionId });
+            const { name, email, phone, age, processed, approved, DirectionId } = req.body;
+            const data = await Application.create({ name, email, phone, age, processed, approved, DirectionId });
             return res.json(data);
         } catch(e) {
             next(ApiError.badRequest(e.message));
@@ -46,15 +46,15 @@ class ApplicationController {
     async updateProcessed(req, res, next) {
         try {
             const { id } = req.params;
-            const { processed } = req.body;
+            const { processed, approved } = req.body;
 
             const updatedApplication = await Application.update(
-                { processed },
+                { processed, approved },
                 { where: { id } }
             );
 
             if (updatedApplication[ 0 ] === 1) {
-                return res.json({ message: 'Processed updated successfully' });
+                return res.json({ message: 'updated successfully' });
             } else {
                 throw new Error('Application not found');
             }
