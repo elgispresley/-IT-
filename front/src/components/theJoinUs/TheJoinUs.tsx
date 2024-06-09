@@ -21,7 +21,7 @@ const TheJoinUs = () => {
 					отделении &laquo;Информационные
 					технологии&raquo; в&nbsp;Бишкекском техническом колледже!
 				</p>
-				<Link href={'/'} className={styles.btnJoin}>Начать</Link>
+				<Link href={'/directions'} className={styles.btnJoin}>Начать</Link>
 			</div>
 		</div>
 	)

@@ -23,7 +23,7 @@ const TheSearchInfo = () => {
 								Найдите себя в предмете, курсе , чтобы ваше будущее было подходящим для вас.
 							</p>
 						</div>
-						<Link className={styles.linckBegin} href={'/'}>Начать <ArrowRight /></Link>
+						<Link className={styles.linckBegin} href={'/university'}>Начать <ArrowRight /></Link>
 					</div>
 				</li>
 				<li className={styles.textSearch}>
@@ -37,7 +37,7 @@ const TheSearchInfo = () => {
 								Найдите корпуса, чтобы узнать о уроках
 							</p>
 						</div>
-						<Link className={styles.linckBegin} href={'/'}>Начать <ArrowRight /></Link>
+						<Link className={styles.linckBegin} href={'/university'}>Начать <ArrowRight /></Link>
 					</div>
 				</li>
 				<li className={styles.textSearch}>
@@ -51,7 +51,7 @@ const TheSearchInfo = () => {
 								Найдите подходящее направление , что бы ваше будущее было в ваших руках.
 							</p>
 						</div>
-						<Link className={styles.linckBegin} href={'/'}>Начать <ArrowRight /></Link>
+						<Link className={styles.linckBegin} href={'/university'}>Начать <ArrowRight /></Link>
 					</div>
 				</li>
 			</ul>

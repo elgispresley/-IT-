@@ -1,5 +1,6 @@
 import React from 'react'
 import styles from './TheTextInfo.module.scss'
+import Link from "next/link";
 
 const TheTextInfo = () => {
 	return (
@@ -12,7 +13,7 @@ const TheTextInfo = () => {
 				до&nbsp;разработки
 				веб-приложений и&nbsp;анализа данных.
 			</p>
-			<button className={styles.btnBegin}>Начать</button>
+			<Link href={'/university'} className={styles.btnBegin}>Начать</Link>
 		</>
 	)
 }

@@ -19,8 +19,19 @@ const DirectionsUniversity = () => {
         fetchData();
     }, []);
 
+
     return (
         <div className={styles.contentDerections}>
+            <div className={styles.blockBTN}>
+                <p className={styles.textDescrition}>Вы можете скачать все направления по кнопке с право</p>
+                <a
+                    href="/Направления.pdf"
+                    target="_blank"
+                    className={styles.lineBlock}
+                >
+                    Посмотреть направления
+                </a>
+            </div>
             <ul className={styles.blockList}>
                 {Array.isArray(data) && data.map((elem: any) => (
                     <li key={elem.id} className={styles.infoList}>

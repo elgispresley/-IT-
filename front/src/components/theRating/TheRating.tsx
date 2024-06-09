@@ -44,7 +44,7 @@ const TheRating = () => {
 				</li>
 			</ul>
 			<div className={styles.linck}>
-				<Link href={'/'} className={styles.btnRating}>Узнать подробнее <ArrowRight /></Link>
+				<Link href={'/directions'} className={styles.btnRating}>Узнать подробнее <ArrowRight /></Link>
 			</div>
 		</div>
 	)

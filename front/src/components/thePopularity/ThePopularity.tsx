@@ -22,7 +22,7 @@ const ThePopularity = () => {
 					<p className={styles.text}>
 						Swift для iOS и macOS
 					</p>
-					<Link className={styles.linckRaring} href={'/'}>Узнать подробнее <ArrowRight /></Link>
+					<Link className={styles.linckRaring} href={'/directions'}>Узнать подробнее <ArrowRight /></Link>
 				</li>
 				<li className={styles.textRating}>
 					<div className={styles.images}>
@@ -31,7 +31,7 @@ const ThePopularity = () => {
 					<p className={styles.text}>
 						JavaScript для веб-сайтов и веб-приложений
 					</p>
-					<Link className={styles.linckRaring} href={'/'}>Узнать подробнее <ArrowRight /></Link>
+					<Link className={styles.linckRaring} href={'/directions'}>Узнать подробнее <ArrowRight /></Link>
 				</li>
 				<li className={styles.textRating}>
 					<div className={styles.images}>
@@ -40,7 +40,7 @@ const ThePopularity = () => {
 					<p className={styles.text}>
 						SQL для базы данных
 					</p>
-					<Link className={styles.linckRaring} href={'/'}>Узнать подробнее <ArrowRight /></Link>
+					<Link className={styles.linckRaring} href={'/directions'}>Узнать подробнее <ArrowRight /></Link>
 				</li>
 			</ul>
 		</div>
