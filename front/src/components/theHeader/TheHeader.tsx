@@ -8,7 +8,7 @@ import React from 'react'
 import styles from './TheHeader.module.scss'
 
 export const navItems = [
-	{ label: 'Университет', href: '/university' },
+	{ label: 'О нас', href: '/university' },
 	{ label: 'Направления', href: '/directions' },
 ]
 
@@ -19,7 +19,7 @@ const TheHeader = () => {
 	return (
 		<header className={styles.wrapperHeader}>
 			<div className={styles.menu}>
-				<Link href={'/'} className={styles.logo}><Logo /></Link>
+				<Link href={'/'} className={styles.logo}>БТК</Link>
 				<nav className={styles.navText}>
 					<Navigation navLinks={navItems} />
 				</nav>
