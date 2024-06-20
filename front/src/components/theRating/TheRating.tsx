@@ -22,7 +22,7 @@ const TheRating = () => {
 					<p className={styles.text}>
 						Базы данных и их управление, включая SQL и NoSQL решения
 					</p>
-					<Link className={styles.linckRaring} href={'/'}>Узнать подробнее <ArrowRight /></Link>
+					<Link className={styles.linckRaring} href={'/directions'}>Узнать подробнее <ArrowRight /></Link>
 				</li>
 				<li className={styles.textRating}>
 					<div className={styles.images}>
@@ -31,7 +31,7 @@ const TheRating = () => {
 					<p className={styles.text}>
 						Мобильная разработка приложений для iOS и Android
 					</p>
-					<Link className={styles.linckRaring} href={'/'}>Узнать подробнее <ArrowRight /></Link>
+					<Link className={styles.linckRaring} href={'/directions'}>Узнать подробнее <ArrowRight /></Link>
 				</li>
 				<li className={styles.textRating}>
 					<div className={styles.images}>
@@ -40,7 +40,7 @@ const TheRating = () => {
 					<p className={styles.text}>
 						Разработка веб-приложений и веб-сайтов с использованием современных технологий и фреймворков
 					</p>
-					<Link className={styles.linckRaring} href={'/'}>Узнать подробнее <ArrowRight /></Link>
+					<Link className={styles.linckRaring} href={'/directions'}>Узнать подробнее <ArrowRight /></Link>
 				</li>
 			</ul>
 			<div className={styles.linck}>

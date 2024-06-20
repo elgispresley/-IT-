@@ -2,7 +2,17 @@ import React from 'react'
 import styles from './TheTextInfo.module.scss'
 import Link from "next/link";
 
-const TheTextInfo = () => {
+interface Props {
+	setActive: (value: boolean) => void;
+	active: boolean;
+}
+
+const TheTextInfo = ({setActive, active}: Props) => {
+
+	function Chenge () {
+		setActive(!active);
+	}
+
 	return (
 		<>
 			<p className={styles.text}>
@@ -13,7 +23,7 @@ const TheTextInfo = () => {
 				до&nbsp;разработки
 				веб-приложений и&nbsp;анализа данных.
 			</p>
-			<Link href={'/university'} className={styles.btnBegin}>Начать</Link>
+			<button onClick={Chenge} className={styles.btnBegin}>Начать</button>
 		</>
 	)
 }

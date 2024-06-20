@@ -5,6 +5,8 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 const TheJoinUs = () => {
+
+
 	return (
 		<div className={styles.conteinerJoin}>
 			<div className={styles.imageJoin}>
@@ -21,7 +23,7 @@ const TheJoinUs = () => {
 					отделении &laquo;Информационные
 					технологии&raquo; в&nbsp;Бишкекском техническом колледже!
 				</p>
-				<Link href={'/directions'} className={styles.btnJoin}>Начать</Link>
+				<Link href={'/university'} className={styles.btnJoin}>Начать</Link>
 			</div>
 		</div>
 	)

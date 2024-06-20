@@ -5,10 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c0363870-e4ef-43cf-a565-07f66947a08d" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/components/theHeader/TheHeader.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/theHeader/TheHeader.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/app/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/app/styles/Home/Home.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/app/styles/Home/Home.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/app/styles/university/University.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/app/styles/university/University.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/app/university/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/app/university/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/directionsUniversity/DirectionsUniversity.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/directionsUniversity/DirectionsUniversity.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/directionsUniversity/DirectionsUniversity.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/directionsUniversity/DirectionsUniversity.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/theAddAplication/TheAddAplication.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/theAddAplication/TheAddAplication.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/theDatabase/TheDatabase.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/theDatabase/TheDatabase.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/theDatabase/TheDatabase.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/theDatabase/TheDatabase.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/theFooter/TheFooter.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/theFooter/TheFooter.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/theFooter/TheFooter.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/theFooter/TheFooter.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/theJoinUs/TheJoinUs.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/theJoinUs/TheJoinUs.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/theRating/TheRating.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/theRating/TheRating.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/theSearchInfo/TheSearchInfo.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/theSearchInfo/TheSearchInfo.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/theSearchInfo/TheSearchInfo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/theSearchInfo/TheSearchInfo.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/components/theTextInfo/TheTextInfo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/theTextInfo/TheTextInfo.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,7 +116,10 @@
       <workItem from="1717932683979" duration="2304000" />
       <workItem from="1717965282563" duration="5583000" />
       <workItem from="1718473236184" duration="1315000" />
-      <workItem from="1718654337635" duration="199000" />
+      <workItem from="1718654337635" duration="257000" />
+      <workItem from="1718657602802" duration="319000" />
+      <workItem from="1718709570521" duration="49000" />
+      <workItem from="1718907554114" duration="2398000" />
     </task>
     <servers />
   </component>

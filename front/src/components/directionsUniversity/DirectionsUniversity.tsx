@@ -1,10 +1,11 @@
 'use client'
 
-import React, {useEffect, useState} from 'react';
-import styles from './DirectionsUniversity.module.scss'
+import React, { useEffect, useState } from 'react';
+import styles from './DirectionsUniversity.module.scss';
 
 const DirectionsUniversity = () => {
     const [data, setData] = useState([]);
+    const [searchQuery, setSearchQuery] = useState('');
 
     useEffect(() => {
         const fetchData = async () => {
@@ -19,6 +20,13 @@ const DirectionsUniversity = () => {
         fetchData();
     }, []);
 
+    const handleSearchChange = (event: any) => {
+        setSearchQuery(event.target.value);
+    };
+
+    const filteredData = data.filter((elem: any) =>
+        elem.title.toLowerCase().includes(searchQuery.toLowerCase())
+    );
 
     return (
         <div className={styles.contentDerections}>
@@ -32,8 +40,15 @@ const DirectionsUniversity = () => {
                     Посмотреть направления
                 </a>
             </div>
+            <input
+                type="text"
+                placeholder="Поиск по направлениям..."
+                value={searchQuery}
+                onChange={handleSearchChange}
+                className={styles.searchInput}
+            />
             <ul className={styles.blockList}>
-                {Array.isArray(data) && data.map((elem: any) => (
+                {Array.isArray(filteredData) && filteredData.map((elem: any) => (
                     <li key={elem.id} className={styles.infoList}>
                         <div className={styles.blockImages}>
                             <img className={styles.image} src={`http://localhost:5000/${elem.img}`} alt={elem.title}/>

@@ -8,7 +8,15 @@ import SearchPrint from '@/components/theSearchInfo/icon/SearchPrint'
 import HousePrint from '@/components/theSearchInfo/icon/HousePrint'
 import ArrowRight from '@/app/icons/ArrowRight'
 
-const TheSearchInfo = () => {
+interface Props {
+	setActive: (value: boolean) => void;
+	active: boolean;
+}
+
+const TheSearchInfo = ({setActive, active}: Props) => {
+	function Chenge () {
+		setActive(!active);
+	}
 	return (
 		<div className={styles.progress}>
 			<ul className={styles.infoSearch}>
@@ -23,7 +31,7 @@ const TheSearchInfo = () => {
 								Найдите себя в предмете, курсе , чтобы ваше будущее было подходящим для вас.
 							</p>
 						</div>
-						<Link className={styles.linckBegin} href={'/university'}>Начать <ArrowRight /></Link>
+						<button className={styles.linckBegin} onClick={Chenge}>Начать <ArrowRight /></button>
 					</div>
 				</li>
 				<li className={styles.textSearch}>
@@ -37,7 +45,7 @@ const TheSearchInfo = () => {
 								Найдите корпуса, чтобы узнать о уроках
 							</p>
 						</div>
-						<Link className={styles.linckBegin} href={'/university'}>Начать <ArrowRight /></Link>
+						<button className={styles.linckBegin} onClick={Chenge}>Начать <ArrowRight /></button>
 					</div>
 				</li>
 				<li className={styles.textSearch}>
@@ -51,7 +59,7 @@ const TheSearchInfo = () => {
 								Найдите подходящее направление , что бы ваше будущее было в ваших руках.
 							</p>
 						</div>
-						<Link className={styles.linckBegin} href={'/university'}>Начать <ArrowRight /></Link>
+						<button className={styles.linckBegin} onClick={Chenge}>Начать <ArrowRight /></button>
 					</div>
 				</li>
 			</ul>
