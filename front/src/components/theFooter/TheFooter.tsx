@@ -8,14 +8,13 @@ import FacebookIcons from '@/components/theFooter/icons/FacebookIcons'
 import {useSession} from "next-auth/react";
 import Link from 'next/link'
 import styles from './TheFooter.module.scss'
+import classNames from "classnames";
+import TheAddAplication from "@/components/theAddAplication/TheAddAplication";
 
 
-interface Props {
-	setActive: (value: boolean) => void;
-	active: boolean;
-}
-
-const TheFooter = ({setActive, active}: Props) => {
+const TheFooter = () => {
+	const [active, setActive] = useState(false);
+	const [idAplication, setIdAplication] = useState<number>(0);
 	const session = useSession();
 
 	function Chenge () {
@@ -23,6 +22,10 @@ const TheFooter = ({setActive, active}: Props) => {
 	}
 	return (
 		<footer className={styles.footer}>
+			<div className={classNames(styles.shadow, {[styles.shadowNot]: !active})} onClick={() => setActive(!active)}></div>
+			<div className={classNames(styles.application, {[styles.applicationNot]: !active})}>
+				<TheAddAplication onActive={setActive} active={active} idAplication={idAplication}/>
+			</div>
 			<div className={styles.componentFooter}>
 				<div className={styles.headerInput}>
 					<h2 className={styles.nameFooter}>Оставьте вашу информацию и мы свяжемся с вами </h2>
