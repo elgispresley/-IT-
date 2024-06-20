@@ -128,8 +128,7 @@ const TheAddAplication = ({onActive, active, idAplication}: PropsActive) => {
                 </div>
                 {
                     session?.data ? <button onClick={handleChangeActive} className={styles.submit}>Отправить</button> :
-                        <div className={styles.warning}>Для того что бы купить товар вы должны
-                            авторизоваться</div>
+                        <div className={styles.warning}>Для того что бы пройти анкетирование вы должны авторизоваться</div>
                 }
             </form>
         </div>
