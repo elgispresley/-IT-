@@ -43,25 +43,33 @@ const PageApplications = () => {
         }
     };
 
-    const handleSubmit = async (index: string) => {
+    const handleCheckboxChange = async (index: string, type: 'processed' | 'approved') => {
         try {
+            const updatedApplications = applications.map((app: any) => {
+                if (app.id === index) {
+                    return { ...app, processed: type === 'processed', approved: type === 'approved' };
+                }
+                return app;
+            });
+            setApplications(updatedApplications);
+
             const formData = new FormData();
-            formData.append('processed', newDirection.processed.toString());
+            formData.append('processed', (type === 'processed').toString());
+            formData.append('approved', (type === 'approved').toString());
 
             const response = await fetch(`http://localhost:5000/api/application/${index}`, {
                 method: 'PUT',
                 body: formData,
             });
 
-            if (response.ok) {
-                console.log('добавлен объект');
-            } else {
+            if (!response.ok) {
                 console.error('Ошибка при добавлении нового направления:', response.statusText);
             }
         } catch (error) {
             console.error('Ошибка при выполнении запроса:', error);
         }
     };
+
 
     return (
         <div className={styles.wrapperAdmin}>
@@ -103,13 +111,21 @@ const PageApplications = () => {
                                 </ul>
                             </div>
                             <div className={styles.checboxInfo}>
-                                <div className={styles.checboxBlock}>
-                                    <input type='checkbox' name='processed' checked={elem.processed}
-                                           onClick={() => handleSubmit(elem.id)}
-                                           className={styles.checkbox}/>
-                                    <p className={styles.textInput}>
+                                <div className={styles.checkboxBlock}>
+                                    <button
+                                        onClick={() => handleCheckboxChange(elem.id, 'processed')}
+                                        className={`${styles.delete} ${elem.processed ? styles.active : ''}`}
+                                    >
                                         Подтверждение заявки
-                                    </p>
+                                    </button>
+                                </div>
+                                <div className={styles.checkboxBlock}>
+                                    <button
+                                        onClick={() => handleCheckboxChange(elem.id, 'approved')}
+                                        className={`${styles.delete} ${elem.approved ? styles.active : ''}`}
+                                    >
+                                        Отклонение заявки
+                                    </button>
                                 </div>
                             </div>
                             <button className={styles.delete} onClick={() => handleDelete(elem.id)}>Удалить</button>

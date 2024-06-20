@@ -92,6 +92,20 @@
   margin: 0 auto;
 }
 
+.ok, .not, .wait {
+  font-size: 24px;
+  font-weight: 700;
+  color: #2fa10a;
+}
+
+.not, .num {
+  color: red;
+}
+
+.wait {
+  color: #0095e5;
+}
+
 .blockInfo {
   width: 1024px;
   display: flex;

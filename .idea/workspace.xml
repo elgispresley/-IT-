@@ -6,8 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="c0363870-e4ef-43cf-a565-07f66947a08d" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/components/theFooter/TheFooter.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/theFooter/TheFooter.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/components/theFooter/TheFooter.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/components/theFooter/TheFooter.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/app/applications/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/app/applications/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/app/profile/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/app/profile/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/app/styles/admin/Admin.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/app/styles/admin/Admin.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/app/styles/profile/Profile.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/app/styles/profile/Profile.module.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -105,7 +107,7 @@
       <workItem from="1718654337635" duration="257000" />
       <workItem from="1718657602802" duration="319000" />
       <workItem from="1718709570521" duration="49000" />
-      <workItem from="1718907554114" duration="3006000" />
+      <workItem from="1718907554114" duration="4502000" />
     </task>
     <servers />
   </component>
